@@ -1,5 +1,4 @@
-# NonRepeatingRandomWalk
-## Non Repeating Random Walk Using Python
+# Non Repeating Random Walk Using Python
 
 
 
