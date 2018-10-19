@@ -3,12 +3,23 @@
 The program "walks" towards a certain direction
 '''
 
+#TODO: Change the scatter plot with images Us
+
 
 import numpy as np
 import matplotlib.pyplot as plt
 import tkinter as tk
+import math
+from PIL import Image
+class footstep:
+    footstep_image = Image.open("catpaw.png")
 
+    def __init__(self):
+        pass
 
+    def rotate(self, angle): #function for rotating the footprint. The unit is in degrees, and positive values rotate the values in ccw fashion
+        tempFS = self.footstep_image.rotate(angle)
+        return tempFS
 def gen_prob():
     prob_up = np.random.rand()
     prob_down = 1 - prob_up
@@ -78,6 +89,19 @@ class user_interf():
                 f(*args, **kwargs)
         return combined_func
     '''
+    #TODO: Create a program for determining the directional angle at which the footstep should be pointing towards
+    #this can be done using the
+
+#Function used to calculate the rotate angle for the direction of the foot image
+def find_angle(curr_x, prev_x, curr_y, prev_y):
+    x_dir = curr_x - prev_x # x - component for the directional vector
+    y_dir = curr_y - prev_y # y - component for the directional vector
+    angle = math.atan(y_dir/x_dir) #calculate the angle in radians
+    angle = angle*180/math.pi #convert the angle in radians to pi
+    angle = angle - 90 # Subtract 90 degrees from the original image's angle, because the footstep is already point up wards, this makes the starting angle
+    # 0 degrees with respect to the x-axis
+    return angle
+
 
 if __name__ == "__main__":
     # x = np.bool_(True)
